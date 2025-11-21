@@ -1,0 +1,218 @@
+/* Custom Variables (Rivigo Colors) */
+:root {
+    --dark-blue: #004d99; /* Primary Blue */
+    --orange: #ff8c00;    /* Accent Orange/Yellow */
+    --light-gray: #f8f9fa;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+/* --- GLOBAL STYLES --- */
+.text-dark-blue {
+    color: var(--dark-blue);
+}
+.active-nav {
+    color: var(--orange) !important;
+    border-bottom: 2px solid var(--orange);
+    padding-bottom: 5px;
+}
+
+/* 1. Header Styling */
+.header-top-row {
+    background-color: var(--dark-blue); /* Dark Blue Bar for Top Header */
+    color: white;
+    padding: 8px 15px !important;
+}
+
+.top-phone-link {
+    color: white;
+    text-decoration: none;
+    font-size: 0.95em;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.top-phone-link:hover {
+    color: var(--orange);
+}
+
+.main-header {
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo-text-blue {
+    color: var(--dark-blue);
+    font-weight: 700;
+}
+
+.logo-text-orange {
+    color: var(--orange);
+    font-weight: 700;
+}
+
+.main-nav .nav-link {
+    color: #555;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.main-nav .nav-link:hover {
+    color: var(--orange);
+}
+
+.quote-btn {
+    background-color: var(--orange) !important;
+    border-color: var(--orange) !important;
+    color: white !important;
+    font-weight: 600;
+    padding: 8px 20px;
+    transition: background-color 0.3s;
+}
+
+.quote-btn:hover {
+    background-color: #e07b00 !important;
+}
+
+/* 2. Hero Section */
+.hero-section {
+    background-image: url('images/truck-hero.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    height: 60vh; 
+    min-height: 400px; 
+    position: relative;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); 
+}
+
+/* Overlay to darken image for better text readability */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: 5; 
+}
+
+.hero-section > .container {
+    z-index: 10;
+}
+
+.hero-btn {
+    background-color: var(--orange) !important;
+    border: none !important;
+    font-weight: 600;
+    padding: 12px 30px;
+}
+
+/* 3. Capability/Features Section */
+.feature-icon {
+    font-size: 3.5rem;
+    color: var(--orange);
+}
+
+/* 4. Footer */
+.bg-dark {
+    background-color: #333 !important;
+}
+
+/* 💥 POP-UP MODAL STYLING 💥 */
+.modal-popup {
+    display: none; /* Hidden by default */
+    position: fixed; 
+    z-index: 99999; /* Ensure it is on top of everything */
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 30px;
+    border: 1px solid #888;
+    width: 80%; 
+    max-width: 400px; 
+    text-align: center;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 991px) {
+    .hero-section {
+        height: 50vh;
+        min-height: 350px;
+    }
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+}
+
+
+6. 🛡️ $\mathbf{\text{​script.js}}$ $\mathbf{\text{Code}}$​
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // =======================================================
+    // I. POPUP/MODAL HANDLING
+    // =======================================================
+    const modal = document.getElementById("welcomeModal");
+    const closeBtn = document.querySelector(".close-btn");
+
+    if (modal) {
+        // Pop-up 2 सेकंड बाद दिखाएँ (2000 milliseconds)
+        setTimeout(() => {
+            // केवल होम पेज पर Pop-up दिखाएँ
+            if (window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/')) {
+                modal.style.display = "block";
+            }
+        }, 2000); 
+
+        // Close button पर क्लिक करने पर Pop-up बंद करें
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Pop-up के बाहर क्लिक करने पर Pop-up बंद करें
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    }
+
+
+    // =======================================================
+    // II. MOBILE MENU TOGGLE HANDLER (Bootstrap handles most of it)
+    // =======================================================
+    // Standard Bootstrap setup is used, so no extra JS is needed for the menu toggle.
+});
+

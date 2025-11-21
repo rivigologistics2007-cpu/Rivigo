@@ -1,0 +1,40 @@
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // =======================================================
+    // I. POPUP/MODAL HANDLING
+    // =======================================================
+    const modal = document.getElementById("welcomeModal");
+    const closeBtn = document.querySelector(".close-btn");
+
+    if (modal) {
+        // Pop-up 2 सेकंड बाद दिखाएँ (2000 milliseconds)
+        setTimeout(() => {
+            modal.style.display = "block";
+        }, 2000); 
+
+        // Close button पर क्लिक करने पर Pop-up बंद करें
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Pop-up के बाहर क्लिक करने पर Pop-up बंद करें
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    }
+
+
+    // =======================================================
+    // II. MOBILE MENU TOGGLE HANDLER (Hamburger Menu)
+    // =======================================================
+    const menuToggle = document.querySelector('.navbar-toggler');
+    const mainNav = document.querySelector('.collapse.navbar-collapse'); 
+
+    if (menuToggle && mainNav) {
+        // Bootstrap's collapse plugin handles the main toggle, 
+        // but we ensure the links inside are properly formatted.
+    }
+});
+
